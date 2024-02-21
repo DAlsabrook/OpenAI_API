@@ -21,19 +21,17 @@ def chat_gpt(mood, how_detailed, message):
         model="gpt-3.5-turbo",
     )
     response = complete.choices[0].message.content
-    print(complete)
     print(f"\nChatGPT:\n{response}\n")
 
 
-#The mood you want the response sent back in
-mood = "Kind"
-
-#Detailed suggestions not very, moderate, very, extremely
-how_detailed = "moderate"
-
-#Message you want to send to GPT
-message = "What day of the week will it be in exactly 1248762515627382 days"
-
-
 if __name__ == "__main__":
+    #The mood you want the response sent back in
+    mood = "Kind"
+
+    #Detailed suggestions not very, moderate, very, extremely
+    how_detailed = "moderate"
+
+    #Message you want to send to GPT
+    message = "How would i run a .py file in a wsl(windows subsystem for linux) enviroment"
+
     chat_gpt(mood, how_detailed, message)
