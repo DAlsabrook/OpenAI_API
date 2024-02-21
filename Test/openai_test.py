@@ -1,12 +1,20 @@
+import os
 from openai import OpenAI
-client = OpenAI()
 
-completion = client.chat.completions.create(
-  model="gpt-3.5-turbo",
-  messages=[
-    {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
-    {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
-  ]
+
+client = OpenAI(
+    # This is the default and can be omitted
+    #api_key="",
+    api_key= os.getenv('OPENAI_API_KEY')
 )
 
-print(completion.choices[0].message)
+complete = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user", "content": "create an image of a dog",
+        }
+    ],
+    model="gpt-3.5-turbo",
+)
+response = complete.choices[0].message.content
+print(response)
